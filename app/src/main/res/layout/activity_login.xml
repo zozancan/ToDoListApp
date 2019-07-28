@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:background="#423D33">
+
+    <RelativeLayout
+        android:id="@+id/rlHeader"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center_vertical"
+        android:layout_alignParentTop="true">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/ic_back"
+            android:tint="#fff"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/ivBack"
+            android:layout_marginLeft="18dp"
+            android:text="Login"
+            android:textSize="28sp"
+            android:textColor="#fff"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlLoginInfo"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:gravity="center"
+        tools:ignore="InvalidId"
+        android:layout_below="@+id/rlHeader"
+
+        >
+
+        <EditText
+            android:id="@+id/etMail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:hint="E-mail"
+            android:textColorHint="#E8E6E1"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_below="@+id/etMail"
+            android:layout_marginTop="10dp"
+            android:hint="Password"
+            android:textColorHint="#E8E6E1"
+            android:textSize="18sp"
+            android:inputType="textPassword"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlFooter"
+        android:layout_below="@+id/rlLoginInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        tools:ignore="NotSibling">
+
+        <ImageView
+            android:id="@+id/ivDone"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:alpha=".5"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/drawable_rounded_yellow"
+            android:foreground="?android:selectableItemBackground"
+            android:onClick="login"
+            android:src="@drawable/ic_right"
+            android:tint="#857F72"
+            tools:ignore="OnClick" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

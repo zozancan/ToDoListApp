@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ToDoListActivity"
+    android:background="#E8E6E1"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rlHeader"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center_vertical"
+        android:layout_alignParentTop="true"
+        android:background="#fff"
+        android:elevation="2dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/ivBack"
+            android:layout_marginLeft="18dp"
+            android:text="To-Do List"
+            android:textSize="28sp"
+            android:textColor="#27241D" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:elevation="4dp">
+
+        <EditText
+            android:id="@+id/etListName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Type of your list name"
+            tools:ignore="UnknownId" />
+
+ <ImageView
+    android:id="@+id/ivAddList"
+     android:padding="5dp"
+    android:layout_width="40dp"
+    android:layout_height="40dp"
+    android:layout_alignParentRight="true"
+    android:src="@drawable/ic_add_list"
+     android:onClick="addList"
+     tools:ignore="OnClick" />
+
+    </RelativeLayout>
+
+</LinearLayout>
