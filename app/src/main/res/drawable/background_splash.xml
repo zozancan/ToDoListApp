@@ -7,7 +7,6 @@
 
         <item>
             <bitmap
-                android:alpha=".8"
                 android:gravity="center"
                 android:src="@drawable/ic_huawei" />
         </item>

@@ -1,5 +1,6 @@
 package com.zozancan.todolistapp;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -106,6 +107,9 @@ public class ToDoListActivity extends AppCompatActivity implements OnToDoListCli
 
     @Override
     public void onToDoListClick(ToDoList toDoList) {
+
+        Intent intent = new Intent(getApplicationContext(), ToDoListDetail.class);
+        startActivity(intent);
 
     }
 
