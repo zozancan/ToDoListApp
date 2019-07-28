@@ -10,7 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -39,14 +42,13 @@ public class ToDoListActivity extends AppCompatActivity implements OnToDoListCli
 
     private ToDoListAdapter adapter;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_to_do_list);
         toDoLists = new ArrayList<>();
         listNameText = findViewById(R.id.etListName);
+
 
         ivAddList = findViewById(R.id.ivAddList);
 
@@ -72,17 +74,18 @@ public class ToDoListActivity extends AppCompatActivity implements OnToDoListCli
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    toDoLists.clear();
                 for (DataSnapshot ds : dataSnapshot.child(authUser.getId()).child("lists").getChildren()) {
                     HashMap<String, String> hashMap = (HashMap<String, String>) ds.getValue();
                     ToDoList toDoList = new ToDoList();
 
                     toDoList.setName(hashMap.get("name"));
-                    toDoList.setId(hashMap.get("id"));
+                    toDoList.setId(ds.getKey());
 
                     toDoLists.add(toDoList);
                 }
 
-                displayPosts();
+                displayToDoLists();
             }
 
             @Override
@@ -92,7 +95,7 @@ public class ToDoListActivity extends AppCompatActivity implements OnToDoListCli
         });
     }
 
-    private void displayPosts() { adapter.setToDoLists(toDoLists); }
+    private void displayToDoLists() { adapter.setToDoLists(toDoLists); }
 
     public void addList(View view){
         ToDoList toDoList = new ToDoList(myRef.push().getKey(),listNameText.getText().toString());
@@ -106,4 +109,9 @@ public class ToDoListActivity extends AppCompatActivity implements OnToDoListCli
 
     }
 
+    @Override
+    public void onToDoListDeleteClick(ToDoList toDoList) {
+
+        myRef.child(authUser.getId()).child("lists").child(toDoList.getId()).removeValue();
+    }
 }

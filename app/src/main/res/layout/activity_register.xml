@@ -87,8 +87,7 @@
             android:foreground="?android:selectableItemBackground"
             android:onClick="register"
             android:src="@drawable/ic_right"
-            android:tint="#857F72"
-            tools:ignore="OnClick" />
+            android:tint="#857F72" />
 
     </RelativeLayout>
 

@@ -7,13 +7,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.zozancan.todolistapp.model.ToDoList;
+import com.zozancan.todolistapp.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.MyViewHolder>  {
+
+    User authUser;
+
+    private FirebaseAuth mAuth;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference myRef;
 
     private List<ToDoList> toDoLists = new ArrayList<>();
 
@@ -49,6 +63,15 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.MyView
             }
         });
 
+        holder.ivDeleteList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toDoListClickListener.onToDoListDeleteClick(toDoList);
+            }
+        });
+
+
+
     }
 
     @Override
@@ -59,10 +82,12 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         private TextView toDoListNameTextView;
+        private ImageView ivDeleteList;
 
         public MyViewHolder(View view) {
             super(view);
             toDoListNameTextView = view.findViewById(R.id.tvListId);
+            ivDeleteList = view.findViewById(R.id.ivDeleteIcon);
 
         }
     }
