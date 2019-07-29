@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -20,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.zozancan.todolistapp.model.ToDoList;
 import com.zozancan.todolistapp.model.ToDoListItem;
 import com.zozancan.todolistapp.model.User;
+import com.zozancan.todolistapp.toDoList.ToDoListDetail;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -55,7 +57,6 @@ public class AddItemActivity extends AppCompatActivity implements DatePickerDial
 
         itemName = findViewById(R.id.etItemName);
         itemDescription = findViewById(R.id.etItemDescription);
-
         Intent intent = getIntent();
         toDoList = (ToDoList) intent.getSerializableExtra("toDoList");
 
@@ -127,6 +128,11 @@ public class AddItemActivity extends AppCompatActivity implements DatePickerDial
         item.setDescription(itemDescription.getText().toString());
         item.setName(itemName.getText().toString());
         item.setDeadline(deadline);
+        item.setStatus(false);
         myRef.child(authUser.getId()).child("lists").child(toDoList.getId()).child("items").push().setValue(item);
+
+        Intent intent = new Intent(AddItemActivity.this, ToDoListDetail.class);
+        intent.putExtra("toDoList", toDoList);
+        startActivity(intent);
     }
 }
