@@ -1,4 +1,4 @@
-package com.zozancan.todolistapp;
+package com.zozancan.todolistapp.toDoList;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,19 +7,26 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.zozancan.todolistapp.AddItemActivity;
+import com.zozancan.todolistapp.R;
 import com.zozancan.todolistapp.model.ToDoList;
 
 public class ToDoListDetail extends AppCompatActivity {
 
+    private TextView tvListName;
     private ImageView sortImageView;
+
+    ToDoList toDoList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_to_do_list_detail);
 
+        tvListName = findViewById(R.id.tvListName);
         sortImageView = findViewById(R.id.ivSort);
         sortImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,13 +50,26 @@ public class ToDoListDetail extends AppCompatActivity {
                 popup.show();
     }
         });
-//soooooooooorrrrrr
-        /* final ImageView ivBack = findViewById(R.id.ivBack);
+        final ImageView ivBack = findViewById(R.id.ivBack);
         ivBack.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(ToDoListDetail.this, ToDoList.class);
+                Intent intent = new Intent(ToDoListDetail.this, ToDoListActivity.class);
                 startActivity(intent);
             }
-        }); */
+        });
+
+        final ImageView ivAdd = findViewById(R.id.ivAdd);
+        ivAdd.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(ToDoListDetail.this, AddItemActivity.class);
+                intent.putExtra("toDoList", toDoList);
+                startActivity(intent);
+            }
+        });
+
+        Intent intent = getIntent();
+        toDoList = (ToDoList) intent.getSerializableExtra("toDoList");
+
+        tvListName.setText(toDoList.getName());
     }
 }

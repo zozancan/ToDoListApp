@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E8E6E1"
-    tools:context=".ToDoListDetail"
+    tools:context=".toDoList.ToDoListDetail"
     android:orientation="vertical">
 
     <android.support.constraint.ConstraintLayout
@@ -24,7 +24,8 @@
             android:layout_margin="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/ic_back" />
+            android:src="@drawable/ic_back"
+            android:tint="#27241D"/>
 
         <TextView
             android:id="@+id/tvListName"
@@ -60,12 +61,12 @@
             app:layout_constraintEnd_toEndOf="parent"/>
 
     </android.support.constraint.ConstraintLayout>
-    
+
 
 
 
         <ImageView
-            android:id="@+id/ivDone"
+            android:id="@+id/ivAdd"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:padding="10dp"
@@ -77,6 +78,6 @@
             android:foreground="?android:selectableItemBackground"
             android:src="@drawable/ic_add_list"
             android:tint="#857F72"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="MissingConstraints,NewApi" />
 
 </RelativeLayout>

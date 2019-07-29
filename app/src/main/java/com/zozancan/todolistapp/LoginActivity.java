@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.zozancan.todolistapp.toDoList.ToDoListActivity;
 
 public class LoginActivity extends AppCompatActivity {
 

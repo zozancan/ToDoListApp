@@ -1,9 +1,10 @@
 package com.zozancan.todolistapp.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ToDoList {
+public class ToDoList implements Serializable {
     private String id;
     private String name;
 

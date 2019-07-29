@@ -1,4 +1,4 @@
-package com.zozancan.todolistapp;
+package com.zozancan.todolistapp.toDoList;
 
 import android.view.View;
 
