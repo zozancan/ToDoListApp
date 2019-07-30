@@ -11,9 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddItemActivity"></activity>
+        <activity android:name=".FilterActivity"></activity>
+        <activity android:name=".AddItemActivity" />
         <activity android:name=".toDoList.ToDoListDetail" />
-        <activity android:name=".toDoList.ToDoListActivity" />
+        <activity
+            android:name=".toDoList.ToDoListActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity" />

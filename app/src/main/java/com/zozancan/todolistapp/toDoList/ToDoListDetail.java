@@ -6,8 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -19,15 +21,19 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.zozancan.todolistapp.AddItemActivity;
+import com.zozancan.todolistapp.FilterActivity;
 import com.zozancan.todolistapp.ItemAdapter;
 import com.zozancan.todolistapp.OnItemClick;
 import com.zozancan.todolistapp.R;
+import com.zozancan.todolistapp.model.Filter;
 import com.zozancan.todolistapp.model.ToDoList;
 import com.zozancan.todolistapp.model.ToDoListItem;
 import com.zozancan.todolistapp.model.User;
 
+import java.security.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -37,6 +43,7 @@ public class ToDoListDetail extends AppCompatActivity implements OnItemClick{
 
     private TextView tvListName;
     private ImageView sortImageView;
+    private ImageView filterImageView;
 
     ToDoList toDoList;
     User authUser;
@@ -46,13 +53,25 @@ public class ToDoListDetail extends AppCompatActivity implements OnItemClick{
     DatabaseReference myRef;
 
     private List<ToDoListItem> toDoListItems;
-
     private ItemAdapter adapter;
+
+    private Filter filter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_to_do_list_detail);
+        filter = new Filter();
+        filterImageView = findViewById(R.id.ivFilter);
+        filterImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ToDoListDetail.this, FilterActivity.class);
+                intent.putExtra("filter", filter);
+                intent.putExtra("toDoList", toDoList);
+                startActivity(intent);
+            }
+        });
 
         toDoListItems = new ArrayList<>();
 
@@ -84,7 +103,6 @@ public class ToDoListDetail extends AppCompatActivity implements OnItemClick{
                         return true;
                     }
         });
-
                 popup.show();
     }
         });
@@ -115,18 +133,36 @@ public class ToDoListDetail extends AppCompatActivity implements OnItemClick{
         Intent intent = getIntent();
         toDoList = (ToDoList) intent.getSerializableExtra("toDoList");
 
+        if(intent.getSerializableExtra("filter") != null) {
+            filter = (Filter) intent.getSerializableExtra("filter");
+        }
+
         tvListName.setText(toDoList.getName());
 
         getItemLists();
     }
 
     private void getItemLists() {
+        myRef = myRef.child(authUser.getId()).child("lists").child(toDoList.getId()).child("items");
+        Query query = myRef;
+        if(!filter.getName().isEmpty()) {
+            query = myRef.orderByChild("name").startAt(filter.getName()).endAt(filter.getName() + "\uf8ff");
+        }else if(filter.getCompleted()){
+            query = myRef.orderByChild("status").equalTo(filter.getCompleted());
+        }else if(filter.getExpired()){
+            Date date = new Date();
+            System.out.println("ZozDate" + date.getTime());
+            query = myRef.orderByChild("deadline").startAt(date.getTime());
+        }
 
-        myRef.addValueEventListener(new ValueEventListener() {
+        query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 toDoListItems.clear();
-                for (DataSnapshot ds : dataSnapshot.child(authUser.getId()).child("lists").child(toDoList.getId()).child("items").getChildren()) {
+
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+
+
                     HashMap<Object, Object> hashMap = (HashMap<Object, Object>) ds.getValue();
                     ToDoListItem toDoListItem = new ToDoListItem();
 
@@ -152,12 +188,25 @@ public class ToDoListDetail extends AppCompatActivity implements OnItemClick{
     private void displayItemLists() { adapter.setItemList(toDoListItems); }
 
     @Override
-    public void onItemClick(ToDoListItem ToDoListItem) {
+    public void onItemClick(ToDoListItem toDoListItem) {
 
     }
 
     @Override
-    public void onItemDeleteClick(ToDoListItem ToDoListItem) {
+    public void onItemDeleteClick(ToDoListItem toDoListItem) {
+
+        myRef.child(authUser.getId()).child("lists").child(toDoList.getId()).child("items").child(toDoListItem.getId()).removeValue();
+
+
+    }
+
+    @Override
+    public void onItemStatusClick(ToDoListItem toDoListItem) {
+
+        toDoListItem.changeStatus();
+
+        myRef.child(authUser.getId()).child("lists").child(toDoList.getId()).child("items").child(toDoListItem.getId()).setValue(toDoListItem);
+
 
     }
 }

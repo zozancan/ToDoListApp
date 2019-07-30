@@ -6,18 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.zozancan.todolistapp.model.ToDoList;
 import com.zozancan.todolistapp.model.ToDoListItem;
-import com.zozancan.todolistapp.model.User;
-import com.zozancan.todolistapp.toDoList.OnToDoListClick;
-import com.zozancan.todolistapp.toDoList.ToDoListAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -71,7 +62,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder>{
             }
         });
 
-
+        holder.cbItemStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemClickListener.onItemStatusClick(toDoListItem);
+            }
+        });
 
     }
 

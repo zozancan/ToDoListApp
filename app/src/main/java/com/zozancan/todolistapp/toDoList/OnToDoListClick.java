@@ -1,7 +1,5 @@
 package com.zozancan.todolistapp.toDoList;
-
-import android.view.View;
-
+ 
 import com.zozancan.todolistapp.model.ToDoList;
 
 public interface OnToDoListClick {

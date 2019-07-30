@@ -99,9 +99,9 @@ public class AddItemActivity extends AppCompatActivity implements DatePickerDial
                 hour, minute, DateFormat.is24HourFormat(this));
         timePickerDialog.show();
 
-        SimpleDateFormat inputFormat = new SimpleDateFormat("d-M-yyyy");
+        SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MM-yyyy");
         SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MM-yyyy");
-        String inputDateStr=dayFinal + "-" + monthFinal + "-" + yearFinal + hourFinal + ":" + minuteFinal;
+        String inputDateStr=dayFinal + "-" + monthFinal + "-" + yearFinal;
         deadline = null;
         try {
             deadline = inputFormat.parse(inputDateStr);
