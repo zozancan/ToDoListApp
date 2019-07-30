@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
@@ -90,16 +91,15 @@ public class AddItemActivity extends AppCompatActivity implements DatePickerDial
         yearFinal = i;
         monthFinal = i1 + 1;
         dayFinal = i2;
-
         Calendar calendar = Calendar.getInstance();
-        hour = calendar.get(Calendar.DAY_OF_MONTH);
+        hour = calendar.get(Calendar.HOUR);
         minute = calendar.get(Calendar.MINUTE);
 
         TimePickerDialog timePickerDialog = new TimePickerDialog(AddItemActivity.this, AddItemActivity.this,
                 hour, minute, DateFormat.is24HourFormat(this));
         timePickerDialog.show();
 
-        SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat inputFormat = new SimpleDateFormat("d-M-yyyy");
         SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MM-yyyy");
         String inputDateStr=dayFinal + "-" + monthFinal + "-" + yearFinal;
         deadline = null;
@@ -119,6 +119,8 @@ public class AddItemActivity extends AppCompatActivity implements DatePickerDial
 
         dateTimePickerText.setText(outputDateStr + " " + hourFinal + ":" + minuteFinal);
 
+        deadline.setHours(hourFinal);
+        deadline.setMinutes(minuteFinal);
     }
 
     public void addItem(View view){
@@ -127,7 +129,7 @@ public class AddItemActivity extends AppCompatActivity implements DatePickerDial
         item.setCreatedDate(date);
         item.setDescription(itemDescription.getText().toString());
         item.setName(itemName.getText().toString());
-        item.setDeadline(deadline);
+        item.setDeadline(deadline.getTime());
         item.setStatus(false);
         myRef.child(authUser.getId()).child("lists").child(toDoList.getId()).child("items").push().setValue(item);
 

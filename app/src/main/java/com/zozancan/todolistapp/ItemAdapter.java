@@ -41,7 +41,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder>{
     @Override
     public void onBindViewHolder(ItemAdapter.MyViewHolder holder, int position) {
 
-        SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 
         final ToDoListItem toDoListItem = toDoListItems.get(position);
         holder.tvItemName.setText(toDoListItem.getName());

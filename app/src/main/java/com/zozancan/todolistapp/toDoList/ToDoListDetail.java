@@ -34,6 +34,8 @@ import com.zozancan.todolistapp.model.ToDoListItem;
 import com.zozancan.todolistapp.model.User;
 
 import java.security.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -151,8 +153,15 @@ public class ToDoListDetail extends AppCompatActivity implements OnItemClick{
             query = myRef.orderByChild("status").equalTo(filter.getCompleted());
         }else if(filter.getExpired()){
             Date date = new Date();
+            SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+            String formattedDate = formatter.format(date);
+            try {
+                date = formatter.parse(formattedDate);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             System.out.println("ZozDate" + date.getTime());
-            query = myRef.orderByChild("deadline").startAt(date.getTime());
+            query = myRef.orderByChild("deadline").endAt(date.getTime());
         }
 
         query.addValueEventListener(new ValueEventListener() {
@@ -168,7 +177,7 @@ public class ToDoListDetail extends AppCompatActivity implements OnItemClick{
 
                     toDoListItem.setName((String) hashMap.get("name"));
                     toDoListItem.setDescription((String) hashMap.get("description"));
-                    toDoListItem.setDeadline(new Date());
+                    toDoListItem.setDeadline((Long) hashMap.get("deadline"));
                     toDoListItem.setStatus((Boolean) hashMap.get("status"));
                     toDoListItem.setId(ds.getKey());
 

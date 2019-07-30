@@ -6,7 +6,7 @@ public class ToDoListItem {
     private String id;
     private String name;
     private String description;
-    private Date deadline;
+    private Long deadline;
     private Boolean status;
     private Date createdDate;
 
@@ -36,11 +36,11 @@ public class ToDoListItem {
         this.description = description;
     }
 
-    public Date getDeadline() {
+    public Long getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(Date deadline) {
+    public void setDeadline(Long deadline) {
         this.deadline = deadline;
     }
 
