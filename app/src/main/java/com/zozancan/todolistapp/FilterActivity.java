@@ -54,4 +54,11 @@ public class FilterActivity extends AppCompatActivity {
         intent.putExtra("toDoList", toDoList);
         startActivity(intent);
     }
+
+    public void backClick(View view) {
+        Intent intent = new Intent(FilterActivity.this, ToDoListDetail.class);
+        intent.putExtra("filter", filter);
+        intent.putExtra("toDoList", toDoList);
+        startActivity(intent);
+    }
 }

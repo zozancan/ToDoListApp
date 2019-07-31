@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddItemActivity">
+    tools:context=".AddItemActivity"
+    android:background="@color/white">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/clHeader"
@@ -12,7 +13,7 @@
         android:layout_height="70dp"
         android:gravity="center_vertical"
         android:layout_alignParentTop="true"
-        android:background="#fff"
+        android:background="@color/cyan"
         android:elevation="2dp">
 
         <ImageView
@@ -23,7 +24,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:src="@drawable/ic_back"
-            android:tint="#27241D"/>
+            android:onClick="backClick"
+            android:tint="@color/white"
+            tools:ignore="OnClick" />
 
         <TextView
             android:id="@+id/tvHeader"
@@ -35,7 +38,7 @@
             app:layout_constraintTop_toTopOf="@+id/ivBack"
             app:layout_constraintBottom_toBottomOf="@id/ivBack"
             android:textSize="24sp"
-            android:textColor="#27241D"
+            android:textColor="@color/white"
             tools:ignore="MissingConstraints" />
 
 
@@ -152,14 +155,14 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:padding="10dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="16dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:background="@drawable/drawable_rounded_yellow"
         android:foreground="?android:selectableItemBackground"
         android:src="@drawable/ic_completed"
-        android:tint="#857F72"
+        android:tint="@color/brown"
         android:onClick="addItem"
         tools:ignore="MissingConstraints,NewApi" />
 

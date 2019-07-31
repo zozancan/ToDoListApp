@@ -137,4 +137,10 @@ public class AddItemActivity extends AppCompatActivity implements DatePickerDial
         intent.putExtra("toDoList", toDoList);
         startActivity(intent);
     }
+
+    public void backClick(View view) {
+        Intent intent = new Intent(AddItemActivity.this, ToDoListDetail.class);
+        intent.putExtra("toDoList", toDoList);
+        startActivity(intent);
+    }
 }

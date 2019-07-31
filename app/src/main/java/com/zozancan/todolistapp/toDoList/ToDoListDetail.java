@@ -145,12 +145,12 @@ public class ToDoListDetail extends AppCompatActivity implements OnItemClick{
     }
 
     private void getItemLists() {
-        myRef = myRef.child(authUser.getId()).child("lists").child(toDoList.getId()).child("items");
-        Query query = myRef;
+        DatabaseReference tmpMyRef = myRef.child(authUser.getId()).child("lists").child(toDoList.getId()).child("items");
+        Query query = tmpMyRef;
         if(!filter.getName().isEmpty()) {
-            query = myRef.orderByChild("name").startAt(filter.getName()).endAt(filter.getName() + "\uf8ff");
+            query = tmpMyRef.orderByChild("name").startAt(filter.getName()).endAt(filter.getName() + "\uf8ff");
         }else if(filter.getCompleted()){
-            query = myRef.orderByChild("status").equalTo(filter.getCompleted());
+            query = tmpMyRef.orderByChild("status").equalTo(filter.getCompleted());
         }else if(filter.getExpired()){
             Date date = new Date();
             SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
@@ -161,7 +161,7 @@ public class ToDoListDetail extends AppCompatActivity implements OnItemClick{
                 e.printStackTrace();
             }
             System.out.println("ZozDate" + date.getTime());
-            query = myRef.orderByChild("deadline").endAt(date.getTime());
+            query = tmpMyRef.orderByChild("deadline").endAt(date.getTime());
         }
 
         query.addValueEventListener(new ValueEventListener() {
@@ -215,7 +215,6 @@ public class ToDoListDetail extends AppCompatActivity implements OnItemClick{
         toDoListItem.changeStatus();
 
         myRef.child(authUser.getId()).child("lists").child(toDoList.getId()).child("items").child(toDoListItem.getId()).setValue(toDoListItem);
-
 
     }
 }

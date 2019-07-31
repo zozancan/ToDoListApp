@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".toDoList.ToDoListActivity"
-    android:background="#E8E6E1"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -14,7 +14,7 @@
         android:layout_height="70dp"
         android:gravity="center_vertical"
         android:layout_alignParentTop="true"
-        android:background="#fff"
+        android:background="@color/cyan"
         android:elevation="2dp">
 
         <TextView
@@ -24,7 +24,7 @@
             android:layout_marginLeft="18dp"
             android:text="To-Do List"
             android:textSize="28sp"
-            android:textColor="#27241D" />
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 
@@ -34,14 +34,14 @@
         android:layout_marginRight="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#fff"
+        android:background="@color/white2"
         android:elevation="4dp">
 
         <EditText
             android:id="@+id/etListName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Type of your list name"
+            android:hint="Enter your list name"
             tools:ignore="UnknownId" />
 
  <ImageView

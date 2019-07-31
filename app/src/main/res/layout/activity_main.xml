@@ -6,7 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="#FFEEEE">
+    android:background="@color/colorSplash"
+    android:layout_gravity="center"
+    android:gravity="center">
 
     <RelativeLayout
         android:id="@+id/rlIcon"
@@ -16,7 +18,8 @@
         <ImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:background="@drawable/ic_huawei"/>
+            android:background="@drawable/ic_main"
+            android:tint="@color/darkBrown" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_below="@+id/rlIcon"
@@ -31,7 +34,7 @@
             android:background="@drawable/btn_background"
             android:text="Create a new account!"
             android:textAllCaps="false"
-            android:textColor="#610404"
+            android:textColor="@color/red"
             android:textSize="18sp" />
         <TextView
             android:id="@+id/tvLogin"
@@ -40,7 +43,7 @@
             android:layout_width="199dp"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
-            android:textColor="#423D33"
+            android:textColor="@color/darkBrown"
             android:text="Sign In"
             android:textStyle="bold"
             android:textSize="18sp"
