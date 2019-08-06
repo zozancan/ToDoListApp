@@ -1,4 +1,4 @@
-package com.zozancan.todolistapp;
+package com.zozancan.todolistapp.item;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.zozancan.todolistapp.R;
 import com.zozancan.todolistapp.model.ToDoListItem;
 
 import java.text.SimpleDateFormat;

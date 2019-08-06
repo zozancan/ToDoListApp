@@ -1,15 +1,13 @@
-package com.zozancan.todolistapp;
+package com.zozancan.todolistapp.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 
+import com.zozancan.todolistapp.R;
 import com.zozancan.todolistapp.model.Filter;
 import com.zozancan.todolistapp.model.ToDoList;
 import com.zozancan.todolistapp.toDoList.ToDoListDetail;

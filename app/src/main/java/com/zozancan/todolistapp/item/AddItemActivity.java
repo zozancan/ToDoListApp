@@ -1,4 +1,4 @@
-package com.zozancan.todolistapp;
+package com.zozancan.todolistapp.item;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -6,12 +6,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -19,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.zozancan.todolistapp.R;
 import com.zozancan.todolistapp.model.ToDoList;
 import com.zozancan.todolistapp.model.ToDoListItem;
 import com.zozancan.todolistapp.model.User;

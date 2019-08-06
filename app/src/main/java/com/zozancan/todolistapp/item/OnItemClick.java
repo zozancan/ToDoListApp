@@ -1,4 +1,4 @@
-package com.zozancan.todolistapp;
+package com.zozancan.todolistapp.item;
 
 import com.zozancan.todolistapp.model.ToDoList;
 import com.zozancan.todolistapp.model.ToDoListItem;
