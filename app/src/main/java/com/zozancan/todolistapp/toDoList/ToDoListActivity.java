@@ -27,13 +27,13 @@ import java.util.List;
 
 public class ToDoListActivity extends AppCompatActivity implements OnToDoListClick {
 
-    EditText listNameText;
-    ImageView ivAddList;
-    User authUser;
+    private EditText listNameText;
+    private ImageView ivAddList;
+    private User authUser;
 
     private FirebaseAuth mAuth;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference myRef;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference myRef;
 
     private List<ToDoList> toDoLists;
 
@@ -45,7 +45,6 @@ public class ToDoListActivity extends AppCompatActivity implements OnToDoListCli
         setContentView(R.layout.activity_to_do_list);
         toDoLists = new ArrayList<>();
         listNameText = findViewById(R.id.etListName);
-
 
         ivAddList = findViewById(R.id.ivAddList);
 

@@ -19,7 +19,7 @@ import com.zozancan.todolistapp.toDoList.ToDoListActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText mailText, passwordText;
+    private EditText mailText, passwordText;
 
     private FirebaseAuth mAuth;
 

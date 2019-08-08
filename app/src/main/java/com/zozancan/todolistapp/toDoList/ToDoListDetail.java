@@ -44,12 +44,12 @@ public class ToDoListDetail extends AppCompatActivity implements OnItemClick{
     private ImageView sortImageView;
     private ImageView filterImageView;
 
-    ToDoList toDoList;
-    User authUser;
+    private ToDoList toDoList;
+    private User authUser;
 
     private FirebaseAuth mAuth;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference myRef;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference myRef;
 
     private List<ToDoListItem> toDoListItems;
     private ItemAdapter adapter;
@@ -91,7 +91,6 @@ public class ToDoListDetail extends AppCompatActivity implements OnItemClick{
                 popup.getMenuInflater()
                         .inflate(R.menu.popup_menu, popup.getMenu());
 
-                //registering popup with OnMenuItemClickListener
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
                         Toast.makeText(ToDoListDetail
@@ -167,7 +166,6 @@ public class ToDoListDetail extends AppCompatActivity implements OnItemClick{
                 toDoListItems.clear();
 
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-
 
                     HashMap<Object, Object> hashMap = (HashMap<Object, Object>) ds.getValue();
                     ToDoListItem toDoListItem = new ToDoListItem();

@@ -20,11 +20,11 @@ import java.util.List;
 
 public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.MyViewHolder>  {
 
-    User authUser;
+    private User authUser;
 
     private FirebaseAuth mAuth;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference myRef;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference myRef;
 
     private List<ToDoList> toDoLists = new ArrayList<>();
 

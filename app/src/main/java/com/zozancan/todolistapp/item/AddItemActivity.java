@@ -33,15 +33,15 @@ public class AddItemActivity extends AppCompatActivity implements DatePickerDial
     private EditText itemDescription;
     private TextView dateTimePickerText;
     private String outputDateStr;
-    ToDoList toDoList;
+    private ToDoList toDoList;
 
     private ToDoListItem item;
     private Date deadline;
-    User authUser;
+    private User authUser;
 
     private FirebaseAuth mAuth;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference myRef;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference myRef;
 
 
     int day, month, year, hour, minute;

@@ -14,10 +14,10 @@ import com.zozancan.todolistapp.toDoList.ToDoListDetail;
 
 public class FilterActivity extends AppCompatActivity {
 
-    Filter filter;
-    ToDoList toDoList;
-    EditText etFilterName;
-    CheckBox cbItemCompleted, cbItemExpired;
+    private Filter filter;
+    private ToDoList toDoList;
+    private EditText etFilterName;
+    private CheckBox cbItemCompleted, cbItemExpired;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

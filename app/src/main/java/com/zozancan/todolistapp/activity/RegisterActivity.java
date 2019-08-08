@@ -19,7 +19,7 @@ import com.zozancan.todolistapp.toDoList.ToDoListActivity;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText mailText, passwordText;
+    private EditText mailText, passwordText;
 
     private FirebaseAuth mAuth;
 
@@ -57,12 +57,6 @@ public class RegisterActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
 
                             if (task.isSuccessful()) {
-
-                                //FirebaseUser user = mAuth.getCurrentUser();
-                                //String useremail = user.getEmail().toString();
-                                //System.out.println("user e-mail : " + useremail);
-
-                                //Toast.makeText(RegisterActivity.this, "Kayıt işlemi başarılı!", Toast.LENGTH_SHORT).show();
 
                                 Intent intent = new Intent(RegisterActivity.this, ToDoListActivity.class);
                                 startActivity(intent);
